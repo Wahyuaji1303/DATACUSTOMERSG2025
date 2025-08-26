@@ -1,0 +1,68 @@
+*{box-sizing:border-box;}
+:root{
+  --bg1:#0f1020; --bg2:#1b1b33;
+  --fg:#f7f7fb; --muted:#c9c9d6;
+  --accent:#ff6aa2; --accent-2:#7aa7ff;
+  --glass: rgba(255,255,255,0.08);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+html,body{
+  margin:0; height:100%;
+  font:16px/1.6 "Poppins", ui-sans-serif, system-ui;
+  color:var(--fg);
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
+}
+
+/* Floating hearts */
+.hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;}
+.hearts span{
+  position:absolute;bottom:-10vh;
+  font-size:clamp(18px,2.5vw,36px);opacity:.15;
+  animation:floatUp linear infinite;
+  filter:drop-shadow(0 4px 10px rgba(255,0,80,.25));
+}
+.hearts span:nth-child(1){left:10%;animation:floatUp 12s linear infinite;}
+.hearts span:nth-child(2){left:25%;animation:floatUp 14s linear infinite;}
+.hearts span:nth-child(3){left:40%;animation:floatUp 10s linear infinite;}
+.hearts span:nth-child(4){left:55%;animation:floatUp 13s linear infinite;}
+.hearts span:nth-child(5){left:70%;animation:floatUp 15s linear infinite;}
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:.15;}
+  50%{transform:translateY(-50vh);opacity:.25;}
+  100%{transform:translateY(-105vh);opacity:0;}
+}
+
+/* Card pages */
+.card{
+  width:min(600px,90%);
+  margin:15vh auto;
+  padding:clamp(20px,3vw,32px);
+  text-align:center;
+  backdrop-filter:blur(12px) saturate(150%);
+  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  display:none;
+}
+.card.active{display:block;}
+
+.title{font-size:clamp(26px,5vw,40px);margin:0 0 10px;}
+.subtitle{color:var(--muted);margin:10px 0 20px;}
+
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  font-weight:700;
+  border:none;border-radius:999px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:white;text-decoration:none;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(255,106,162,.25);
+  transition:transform .2s ease,filter .2s ease;
+}
+.btn:hover{filter:brightness(1.08);transform:translateY(-2px);}
+.btn:active{transform:scale(.98);}
+
+.footer{text-align:center;color:var(--muted);margin:30px 0;}
